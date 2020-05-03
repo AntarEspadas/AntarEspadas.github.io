@@ -1,0 +1,152 @@
+﻿body {
+	background-color: #EFEFEF;
+}
+#menubutton {
+	vertical-align: middle;
+	cursor: pointer;
+	z-index: 550;
+}
+#hide-results {
+	position: fixed;
+	background-color: #EFEFEF;
+	left: 15px;
+	right: 15px;
+	height: 50px;
+	z-index: 525;
+	top: 0px;
+}
+#toolbar {
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	height: 50px;
+	-webkit-box-shadow: 0px 0px 32px 0px rgba(171,171,171,1);
+	z-index: 550;
+	position: fixed;
+	top: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	left: 15px;
+	right: 15px;
+}
+#results {
+	top: 75px;
+	bottom: 0px;
+	position: absolute;
+	left: 15px;
+	right: 15px;
+	z-index: 500;
+}
+
+#helper {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+#search-bar {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	border-style: none;
+}
+#search-bar-container {
+	left: 50px;
+	right: 10px;
+	height: 50%;
+	vertical-align: middle;
+	top: 12px;
+	position: absolute;
+}
+#sidebar {
+	overflow: visible;
+	border-radius: 7px;
+	width: 180px;
+	float: left;
+	background-color: #FFFFFF;
+	position: fixed;
+	height: 100%;
+	-webkit-box-shadow: 0px 0px 32px 0px rgba(171,171,171,1);
+	z-index: 550;
+	top: 80px;
+	left: 15px;
+	bottom: 0px;
+}
+#sidebar-outside {
+	opacity: 0.25;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	background-color: #000000;
+	z-index: 530;
+}
+.sidebar-hidden {
+	transition: 250ms;
+  	transform: translateX(-110%);
+}
+
+.sidebar {
+	transition: 250ms;
+  	transform: translateX(0);
+}
+.result-element {
+	margin: 20px;
+	background-color: #000000;
+	transition: 1000ms;
+	width: 200px;
+	height: 300px;
+	border-radius: 15px;
+	overflow: hidden;
+	-webkit-box-shadow: 10px 10px 15px -2px rgba(0,0,0,0.75);
+	float: left;
+	cursor: pointer;
+	clear: left;
+}
+.result-element:hover {
+	transform: translateY(-10%);
+	transition: 500ms;
+}
+
+.result-image {
+	overflow: hidden;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	width: 100%;
+	opacity: 1;
+	transition: 1000ms;
+}
+.result-element:hover .result-image {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	width: 100%;
+	opacity: 0.25;
+	transition: 500ms;
+}
+.result-info {
+	transition: 1000ms;
+	opacity: 0;
+	transform: translateY(-50%);
+	color: #FFFFFF;
+	position: absolute;
+	float: left;
+	width: 200px;
+	height: 100px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.result-element:hover .result-info{
+	transition: 500ms;
+	opacity: 1;
+	transform: translateY(0);
+}
+#lightbox {
+	opacity: 0.75;
+	width: 100%;
+	height: 1000%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color: #000000;
+}
