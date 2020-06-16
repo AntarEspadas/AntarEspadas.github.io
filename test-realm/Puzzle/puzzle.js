@@ -216,6 +216,10 @@ var canvas = document.getElementsByTagName("canvas")[0];
 var c = canvas.getContext('2d');
 var sizes;
 var canvasPieces;
+var touchStartCoords = {
+    "x" : 0,
+    "y" : 0
+}
 //canvas.style.backgroundColor ="red";
 var image = document.createElement("img");
 image.src = "https://cdn.discordapp.com/attachments/241011471897591818/722123307628888104/1ee3b0936a95fadca90698d872a94fa4.png";
@@ -232,15 +236,12 @@ image.onload = function(){
     canvasPieces.shuffle();
     animation();
 }
-
 canvas.addEventListener("click", function(){
     sizes.getSizes();
     var x = event.x - sizes.xPositon;
     var y = event.y - sizes.yPosition;
-    console.log(x + ", " + y);
     var xIndex = Math.floor(x * canvasPieces.xPieces / sizes.xSize);
     var yIndex = Math.floor(y * canvasPieces.yPieces / sizes.ySize);
-    console.log(xIndex + ", " + yIndex);
     if(xIndex == canvasPieces.blankCoords.x){
         if(yIndex - canvasPieces.blankCoords.y == -1){
             canvasPieces.movePiece("down");
@@ -255,6 +256,34 @@ canvas.addEventListener("click", function(){
         }
         else if(xIndex - canvasPieces.blankCoords.x == 1){
             canvasPieces.movePiece("left");
+        }
+    }
+});
+canvas.addEventListener("touchstart", function () {
+    touchStartCoords.x = event.changedTouches[0].clientX;
+    touchStartCoords.y = event.changedTouches[0].clientY;
+    console.log(touchStartCoords.x + ", " + touchStartCoords.y);
+    
+});
+canvas.addEventListener("touchend", function(){
+    var x = event.changedTouches[0].clientX;
+    var y = event.changedTouches[0].clientY;
+    var slope = (touchStartCoords.y - y) / (touchStartCoords.x - x)
+    console.log(x- touchStartCoords.x);
+    if(Math.abs(slope) < 1){
+        if(x - touchStartCoords.x > 0){
+            canvasPieces.movePiece("right");
+        }
+        else{
+            canvasPieces.movePiece("left");
+        }
+    }
+    else{
+        if(y - touchStartCoords.y > 0){
+            canvasPieces.movePiece("down");
+        }
+        else{
+            canvasPieces.movePiece("up");
         }
     }
 });
