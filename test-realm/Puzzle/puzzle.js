@@ -229,7 +229,8 @@ image.onload = function(){
     sizes = new RelativeElementSizes(image.naturalWidth, image.naturalHeight, 95);
     canvasPieces = new Pieces(image,4,4);
     adjustElements();
-    animation()
+    canvasPieces.shuffle();
+    animation();
 }
 
 function h (heightPercent){
