@@ -233,6 +233,32 @@ image.onload = function(){
     animation();
 }
 
+canvas.addEventListener("click", function(){
+    sizes.getSizes();
+    var x = event.x - sizes.xPositon;
+    var y = event.y - sizes.yPosition;
+    console.log(x + ", " + y);
+    var xIndex = Math.floor(x * canvasPieces.xPieces / sizes.xSize);
+    var yIndex = Math.floor(y * canvasPieces.yPieces / sizes.ySize);
+    console.log(xIndex + ", " + yIndex);
+    if(xIndex == canvasPieces.blankCoords.x){
+        if(yIndex - canvasPieces.blankCoords.y == -1){
+            canvasPieces.movePiece("down");
+        }
+        else if(yIndex - canvasPieces.blankCoords.y == 1){
+            canvasPieces.movePiece("up");
+        }
+    }
+    else if(yIndex == canvasPieces.blankCoords.y){
+        if(xIndex - canvasPieces.blankCoords.x == -1){
+            canvasPieces.movePiece("right");
+        }
+        else if(xIndex - canvasPieces.blankCoords.x == 1){
+            canvasPieces.movePiece("left");
+        }
+    }
+});
+
 function h (heightPercent){
     return canvas.height * heightPercent / 100;
 }
