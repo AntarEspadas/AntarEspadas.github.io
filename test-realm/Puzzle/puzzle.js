@@ -376,10 +376,13 @@ function getRandomPost(){
         return response.json();
     })
     .then(function(data) {
+        var link = document.getElementById("link");
+        link.innerHTML = "";
         var post = data[Math.floor(Math.random()*200)];
         console.log("file: " + post.file_url + "\nsource: https://danbooru.donmai.us/posts/" + post.id);
         //frame.src = post.file_url;
-        document.getElementById("link").href = "https://danbooru.donmai.us/posts/" + post.id;
+        link.innerHTML = "source";
+        link.href = "https://danbooru.donmai.us/posts/" + post.id;
         image.src = post.file_url;
     });
 }
