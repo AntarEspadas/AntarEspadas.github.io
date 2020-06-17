@@ -130,12 +130,9 @@ class Pieces {
             }
         }
         var N = mergeSort(this);
-        //console.log("N: " + N);
         var e = this.yPieces;
-        //console.log("e: " + e);
         var result = N + e;
         var solveable = result % 2 == this.yPieces % 2;
-        //console.log("N + e: " + result + ", " + (solveable?"solveable":"unsolveable"));
 
         var aux = this.pieces;
         this.pieces = this.altPieces;
@@ -145,23 +142,6 @@ class Pieces {
             var aux = this.get(0);
             this.set(0, this.get(1));
             this.set(1,aux);
-            
-            /*for(var y = 0; y < this.yPieces; y++){
-                for(var x = 0; x < this.xPieces; x++){
-                    this.altPieces[y][x] = this.pieces[y][x];
-                }
-            }
-            var N = mergeSort(this);
-            console.log("N: " + N);
-            var e = this.yPieces;
-            console.log("e: " + e);
-            var result = N + e;
-            var solveable = result % 2 == this.yPieces % 2;
-            console.log("N + e: " + result + ", " + (solveable?"solveable":"unsolveable"));
-
-            var aux = this.pieces;
-            this.pieces = this.altPieces;
-            this.altPieces = aux;*/
         }
     }
 }
@@ -177,27 +157,50 @@ class Piece{
             "x" : 0,
             "y": 0
         }
+        this.isMoving = false;
+        this.time;
     }
     draw(dx, dy, dw, dh){
+        if(!this.isMoving && (this.moving.x != 0 || this.moving.y != 0)){
+            this.isMoving = true;
+            this.time = new Date().getTime();
+        }
+        var stage;
+        if(this.isMoving){
+            new Date().getTime();
+            stage = 150 - (new Date().getTime() - this.time);
+            stage /= 150;
+            if(stage < 0){
+                stage = 0;
+            }
+        }
+        if(this.moving.x < 0){
+            this.moving.x = -1 * stage;
+        }
+        if(this.moving.x > 0){
+            this.moving.x = stage;
+        }
+        if(this.moving.y < 0){
+            this.moving.y = -1 * stage;
+        }
+        if(this.moving.y > 0){
+            this.moving.y = stage;
+        }
+        this.moving.x = Math.round((this.moving.x + Number.EPSILON) * 10) / 10;
+        this.moving.y = Math.round((this.moving.y + Number.EPSILON) * 10) / 10;
+        /*if(this.isMoving){
+            console.log(this.moving.x);
+            console.log(Math.round((stage + Number.EPSILON) * 10) / 10);
+        }*/
+        if(this.isMoving && this.moving.x == 0 && this.moving.y == 0){
+            this.isMoving = false;
+        }
+
         var difx = dw * this.moving.x;
         var dify = dh * this.moving.y;
         c.fillStyle = canvas.style.backgroundColor;
         c.drawImage(image, this.xPos, this.yPos, this.xSize, this.ySize, dx + difx, dy + dify, dw, dh)
         c.strokeRect(dx + difx,dy + dify,dw,dh);
-        if(this.moving.x < 0){
-            this.moving.x += 0.1;
-        }
-        if(this.moving.x > 0){
-            this.moving.x -= 0.1;
-        }
-        if(this.moving.y < 0){
-            this.moving.y +=0.1;
-        }
-        if(this.moving.y > 0){
-            this.moving.y -= 0.1;
-        }
-        this.moving.x = Math.round((this.moving.x + Number.EPSILON) * 10) / 10;
-        this.moving.y = Math.round((this.moving.y + Number.EPSILON) * 10) / 10;
     }
     compareTo(piece){
         return this.index - piece.index;
@@ -223,9 +226,7 @@ var touchStartCoords = {
 //canvas.style.backgroundColor ="red";
 var image = document.createElement("img");
 image.src = "https://cdn.discordapp.com/attachments/241011471897591818/722123307628888104/1ee3b0936a95fadca90698d872a94fa4.png";
-image.alt = "image";
 window.addEventListener("keydown", function(){
-    //console.log(event.key);
     canvasPieces.movePiece(event.key);
 });
 window.addEventListener("resize", adjustElements)
@@ -262,14 +263,12 @@ canvas.addEventListener("click", function(){
 canvas.addEventListener("touchstart", function () {
     touchStartCoords.x = event.changedTouches[0].clientX;
     touchStartCoords.y = event.changedTouches[0].clientY;
-    console.log(touchStartCoords.x + ", " + touchStartCoords.y);
     
 });
 canvas.addEventListener("touchend", function(){
     var x = event.changedTouches[0].clientX;
     var y = event.changedTouches[0].clientY;
     var slope = (touchStartCoords.y - y) / (touchStartCoords.x - x)
-    console.log(x- touchStartCoords.x);
     if(Math.abs(slope) < 1){
         if(x - touchStartCoords.x > 0){
             canvasPieces.movePiece("right");
