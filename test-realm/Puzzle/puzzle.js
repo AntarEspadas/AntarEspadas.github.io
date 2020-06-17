@@ -378,7 +378,7 @@ function getRandomPost(){
     .then(function(data) {
         var post = data[Math.floor(Math.random()*200)];
         console.log("file: " + post.file_url + "\nsource: https://danbooru.donmai.us/posts/" + post.id);
-        frame.src = post.file_url;
-        //image.src = post.file_url;
+        //frame.src = post.file_url;
+        image.src = post.file_url;
     });
 }
