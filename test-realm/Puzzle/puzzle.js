@@ -369,7 +369,7 @@ function randomPermutation(pieces){
     }
 }
 function getRandomPost(){
-    var url = 'https://danbooru.donmai.us/post/index.json?limit=200&page=' + Math.floor(Math.random()*1000 + 1) + '&tags=rating:e';
+    var url = 'https://danbooru.donmai.us/post/index.json?limit=200&page=' + Math.floor(Math.random()*1000 + 1) + '&tags=rating:s';
     console.log("fetching from: " + url);
     fetch(url)
     .then(function(response) {
