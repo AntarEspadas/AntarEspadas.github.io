@@ -239,8 +239,8 @@ var touchStartCoords = {
 }
 //canvas.style.backgroundColor ="red";
 var image = document.createElement("img");
+var frame = document.getElementsByTagName("iframe")[0];
 //image.src = "https://danbooru.donmai.us/data/ed4e01899d1c5f071bc5e1d96c3a161b.jpg";
-var imageUrl;
 getRandomPost();
 window.addEventListener("keydown", function(){
     canvasPieces.movePiece(event.key);
@@ -378,6 +378,7 @@ function getRandomPost(){
     .then(function(data) {
         var post = data[Math.floor(Math.random()*200)];
         console.log("file: " + post.file_url + "\nsource: https://danbooru.donmai.us/posts/" + post.id);
-        imageUrl = post.file_url;
+        frame.src = post.file_url;
+        //image.src = post.file_url;
     });
 }
