@@ -1,3 +1,4 @@
+fetch("http://konachan.com/post.json");
 
 class RelativeElementSizes {
     constructor(elementWith, elementHeight, targetPercentage) {
@@ -198,9 +199,24 @@ class Piece{
 
         var difx = dw * this.moving.x;
         var dify = dh * this.moving.y;
+        //draw image pieces
         c.fillStyle = canvas.style.backgroundColor;
-        c.drawImage(image, this.xPos, this.yPos, this.xSize, this.ySize, dx + difx, dy + dify, dw, dh)
+        c.drawImage(image, this.xPos, this.yPos, this.xSize, this.ySize, dx + difx, dy + dify, dw, dh);
+        //draw contour
+        c.strokeStyle = "rgb(0,0,0)";
         c.strokeRect(dx + difx,dy + dify,dw,dh);
+        //draw background rectangle
+        c.fillStyle = "rgb(0,0,0)";
+        c.globalAlpha = 0.5;
+        c.fillRect(dx+difx,dy+dify,dw/5,dh/5);
+        c.globalAlpha = 1;
+        //draw text
+        c.font = dh/7 + "px Arial";
+        c.fillStyle = "rgb(255,255,255)";
+        c.textAlign = "center";
+        c.fillText(this.index + 1, dx + dw/10 + difx, dy + dh/7 + dify);
+        //c.strokeStyle = "rgb(0,0,0)";
+        //c.strokeText(this.index + 1, dx, dy);
     }
     compareTo(piece){
         return this.index - piece.index;
