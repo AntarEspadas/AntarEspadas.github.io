@@ -316,6 +316,9 @@ function animation(){
     requestAnimationFrame(animation);
     c.clearRect(0,0,w(100),h(100));
     sizes.getSizes();
+    c.globalAlpha = 0.5;
+    c.drawImage(image, sizes.xPositon, sizes.yPosition, sizes.xSize,sizes.ySize);
+    c.globalAlpha = 1;
     canvasPieces.draw(sizes.xPositon, sizes.yPosition, sizes.xSize, sizes.ySize);
 }
 function mergeSort(pieces){
