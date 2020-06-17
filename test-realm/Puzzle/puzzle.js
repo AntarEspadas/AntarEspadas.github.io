@@ -1,5 +1,3 @@
-fetch("http://konachan.com/post.json");
-
 class RelativeElementSizes {
     constructor(elementWith, elementHeight, targetPercentage) {
         this.elementWith = elementWith;
@@ -241,7 +239,8 @@ var touchStartCoords = {
 }
 //canvas.style.backgroundColor ="red";
 var image = document.createElement("img");
-image.src = "https://cdn.discordapp.com/attachments/241011471897591818/722123307628888104/1ee3b0936a95fadca90698d872a94fa4.png";
+//image.src = "https://danbooru.donmai.us/data/ed4e01899d1c5f071bc5e1d96c3a161b.jpg";
+getRandomPost();
 window.addEventListener("keydown", function(){
     canvasPieces.movePiece(event.key);
 });
@@ -364,4 +363,17 @@ function randomPermutation(pieces){
         pieces.set(pieces.length - 1 -i,pieces.get(randomIndex));
         pieces.set(randomIndex,aux);
     }
+}
+function getRandomPost(){
+    var url = 'https://danbooru.donmai.us/post/index.json?limit=200&page=' + Math.floor(Math.random()*1000 + 1) + '&tags=rating:s';
+    console.log("fetching from: " + url);
+    fetch(url)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var post = data[Math.floor(Math.random()*200)];
+        console.log("file: " + post.file_url + "\nsource: https://danbooru.donmai.us/posts/" + post.id);
+        image.src = post.file_url;
+    });
 }
