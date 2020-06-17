@@ -369,7 +369,7 @@ function randomPermutation(pieces){
     }
 }
 function getRandomPost(){
-    var url = 'https://danbooru.donmai.us/post/index.json?limit=200&page=' + Math.floor(Math.random()*1000 + 1) + '&tags=rating:s';
+    var url = 'https://danbooru.donmai.us/post/index.json?limit=200&page=' + Math.floor(Math.random()*1000 + 1) + '&tags=rating:e';
     console.log("fetching from: " + url);
     fetch(url)
     .then(function(response) {
@@ -379,6 +379,7 @@ function getRandomPost(){
         var post = data[Math.floor(Math.random()*200)];
         console.log("file: " + post.file_url + "\nsource: https://danbooru.donmai.us/posts/" + post.id);
         //frame.src = post.file_url;
+        document.getElementById("link").href = "https://danbooru.donmai.us/posts/" + post.id;
         image.src = post.file_url;
     });
 }
