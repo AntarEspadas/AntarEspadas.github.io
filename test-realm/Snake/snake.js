@@ -51,14 +51,15 @@ function Serpiente () {
     this.fruta = new Fruta(this);
     this.gameOver = false;
     this.crecer = false;
-    for(var x = 0; x < 64; x++){
-        for(var y = 0; y < 36; y++){
+    this.puntaje = new Puntaje();
+    for(var x = 0; x < 48; x++){
+        for(var y = 0; y < 27; y++){
             this.celdasLibres[x + "," + y] = true;
         }
     }
-    for(var x = 28; x < 33; x++){
-        this.partes.unshift(new Parte(x,18));
-        delete this.celdasLibres[x + "," + 18];
+    for(var x = 20; x < 24; x++){
+        this.partes.unshift(new Parte(x,13));
+        delete this.celdasLibres[x + "," + 13];
     }
     this.fruta.generar();
     this.dibujar = function () {
@@ -66,6 +67,7 @@ function Serpiente () {
         this.partes.forEach(parte => {
             parte.dibujar();
         });
+        this.puntaje.dibujar();
     }
     this.actualizar = function (){
         var x = 0;
@@ -93,7 +95,6 @@ function Serpiente () {
         var yCabeza = this.partes[0].posicionY + y;
         var parte;
         if(this.crecer){
-            console.log("creciendo");
             this.crecer = false;
             parte = new Parte();
         }
@@ -109,7 +110,7 @@ function Serpiente () {
         delete this.celdasLibres[parte.posicionX + "," + parte.posicionY];
         this.partes.unshift(parte);
         if(xCabeza == this.fruta.x && yCabeza == this.fruta.y){
-            console.log("comer");
+            this.puntaje.puntos++;
             this.crecer = true;
             this.fruta.generar();
         }
@@ -124,7 +125,7 @@ function Parte (posicionX, posicionY) {
     this.posicionY = posicionY;
 
     this.dibujar = function () {
-        var tam = c.width / tamanio.anchoElemento / 4;
+        var tam = c.width / tamanio.anchoElemento / 3;
         var posicion = convertirPosicion(this.posicionX, this.posicionY, tam);
         cxt.fillStyle = "rgb(0,0,0)";
         cxt.fillRect(posicion.x + tam * 0.1, posicion.y + tam * 0.1, tam * 0.8, tam * 0.8);
@@ -142,16 +143,26 @@ function Fruta (serpiente){
         this.y = +coordenadas[1];
     }
     this.dibujar = function (){
-        var tam = c.width / tamanio.anchoElemento / 4;
+        var tam = c.width / tamanio.anchoElemento / 3;
         var posicion = convertirPosicion(this.x, this.y, tam)
         cxt.fillStyle = "rgb(255,255,255)";
         cxt.fillRect(posicion.x + tam * 0.1, posicion.y + tam * 0.1, tam * 0.8, tam * 0.8);
     }
 }
+function Puntaje (){
+    this.puntos = 0;
+
+    this.dibujar = function (){
+        var tamanioFuente = Math.max(c.width, c.height) / 40;
+        cxt.font = tamanioFuente + "px Arial";
+        cxt.fillStyle = "white";
+        cxt.fillText("Score: " + this.puntos, tamanioFuente / 2, c.height - tamanioFuente / 2);
+    }
+}
 function convertirPosicion (x, y, tam){
     var coordenadas = {
-        "x" : x * c.width / (tamanio.anchoElemento * 4),
-        "y" : y * c.height / (tamanio.altoElemento * 4)
+        "x" : x * c.width / (tamanio.anchoElemento * 3),
+        "y" : y * c.height / (tamanio.altoElemento * 3)
     }
     if(c.width < c.height){
         var aux = coordenadas.x;
@@ -187,17 +198,18 @@ function colocarLienzo () {
     dibujarLienzo();
 }
 function dibujarLienzo () {
+    cxt.clearRect(0,0,c.width,c.height);
     serpiente.dibujar();
     cxtVisible.clearRect(0,0,cVisible.width,cVisible.height)
     cxtVisible.drawImage(c,0,0,c.width,c.height,0,0,cVisible.width,cVisible.height)
 }
 function actualizarLienzo () {
-    cxt.clearRect(0,0,c.width,c.height);
     serpiente.actualizar();
-    if(!serpiente.gameOver){
-        dibujarLienzo();
-        setTimeout(actualizarLienzo,200);
+    if(serpiente.gameOver){
+        serpiente = new Serpiente();
     }
+    dibujarLienzo();
+    setTimeout(actualizarLienzo,100);
 }
 
 serpiente = new Serpiente();
