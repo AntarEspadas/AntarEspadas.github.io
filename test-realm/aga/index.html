@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html >
+<head><meta charset="utf-8">
+<title>Portal AGA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 79,70,229;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 36,46,200;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 147,51,234;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 117,13,205;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 239,68,68;
+      --v-theme-error-overlay-multiplier: 1;
+      --v-theme-info: 59,130,246;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 16,185,129;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 245,158,11;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-primary-lighten-1: 113,95,255;
+      --v-theme-primary-lighten-1-overlay-multiplier: 1;
+      --v-theme-primary-lighten-2: 144,120,255;
+      --v-theme-primary-lighten-2-overlay-multiplier: 1;
+      --v-theme-primary-lighten-3: 175,146,255;
+      --v-theme-primary-lighten-3-overlay-multiplier: 1;
+      --v-theme-primary-darken-2: 0,23,172;
+      --v-theme-primary-darken-2-overlay-multiplier: 2;
+      --v-theme-primary-darken-3: 0,1,145;
+      --v-theme-primary-darken-3-overlay-multiplier: 2;
+      --v-theme-secondary-lighten-1: 177,80,255;
+      --v-theme-secondary-lighten-1-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-2: 207,108,255;
+      --v-theme-secondary-lighten-2-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-3: 237,136,255;
+      --v-theme-secondary-lighten-3-overlay-multiplier: 1;
+      --v-theme-secondary-darken-2: 86,0,177;
+      --v-theme-secondary-darken-2-overlay-multiplier: 2;
+      --v-theme-secondary-darken-3: 53,0,149;
+      --v-theme-secondary-darken-3-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-primary-lighten-1: 255,255,255;
+      --v-theme-on-primary-lighten-2: 255,255,255;
+      --v-theme-on-primary-lighten-3: 255,255,255;
+      --v-theme-on-primary-darken-2: 255,255,255;
+      --v-theme-on-primary-darken-3: 255,255,255;
+      --v-theme-on-secondary-lighten-1: 255,255,255;
+      --v-theme-on-secondary-lighten-2: 255,255,255;
+      --v-theme-on-secondary-lighten-3: 0,0,0;
+      --v-theme-on-secondary-darken-2: 255,255,255;
+      --v-theme-on-secondary-darken-3: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 79,70,229;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 36,46,200;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 147,51,234;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 117,13,205;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 239,68,68;
+      --v-theme-error-overlay-multiplier: 1;
+      --v-theme-info: 59,130,246;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 16,185,129;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 245,158,11;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-primary-lighten-1: 113,95,255;
+      --v-theme-primary-lighten-1-overlay-multiplier: 1;
+      --v-theme-primary-lighten-2: 144,120,255;
+      --v-theme-primary-lighten-2-overlay-multiplier: 1;
+      --v-theme-primary-lighten-3: 175,146,255;
+      --v-theme-primary-lighten-3-overlay-multiplier: 1;
+      --v-theme-primary-darken-2: 0,23,172;
+      --v-theme-primary-darken-2-overlay-multiplier: 2;
+      --v-theme-primary-darken-3: 0,1,145;
+      --v-theme-primary-darken-3-overlay-multiplier: 2;
+      --v-theme-secondary-lighten-1: 177,80,255;
+      --v-theme-secondary-lighten-1-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-2: 207,108,255;
+      --v-theme-secondary-lighten-2-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-3: 237,136,255;
+      --v-theme-secondary-lighten-3-overlay-multiplier: 1;
+      --v-theme-secondary-darken-2: 86,0,177;
+      --v-theme-secondary-darken-2-overlay-multiplier: 2;
+      --v-theme-secondary-darken-3: 53,0,149;
+      --v-theme-secondary-darken-3-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-primary-lighten-1: 255,255,255;
+      --v-theme-on-primary-lighten-2: 255,255,255;
+      --v-theme-on-primary-lighten-3: 255,255,255;
+      --v-theme-on-primary-darken-2: 255,255,255;
+      --v-theme-on-primary-darken-3: 255,255,255;
+      --v-theme-on-secondary-lighten-1: 255,255,255;
+      --v-theme-on-secondary-lighten-2: 255,255,255;
+      --v-theme-on-secondary-lighten-3: 0,0,0;
+      --v-theme-on-secondary-darken-2: 255,255,255;
+      --v-theme-on-secondary-darken-3: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 2,6,23;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 15,23,42;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 189,189,189;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 66,66,66;
+      --v-theme-primary: 99,102,241;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 65,78,212;
+      --v-theme-primary-darken-1-overlay-multiplier: 1;
+      --v-theme-secondary: 168,85,247;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 139,58,218;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 239,68,68;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 59,130,246;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 16,185,129;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 245,158,11;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-primary-lighten-1: 130,127,255;
+      --v-theme-primary-lighten-1-overlay-multiplier: 2;
+      --v-theme-primary-lighten-2: 161,153,255;
+      --v-theme-primary-lighten-2-overlay-multiplier: 2;
+      --v-theme-primary-lighten-3: 191,180,255;
+      --v-theme-primary-lighten-3-overlay-multiplier: 2;
+      --v-theme-primary-darken-2: 14,55,184;
+      --v-theme-primary-darken-2-overlay-multiplier: 1;
+      --v-theme-primary-darken-3: 0,34,156;
+      --v-theme-primary-darken-3-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-1: 198,112,255;
+      --v-theme-secondary-lighten-1-overlay-multiplier: 2;
+      --v-theme-secondary-lighten-2: 227,139,255;
+      --v-theme-secondary-lighten-2-overlay-multiplier: 2;
+      --v-theme-secondary-lighten-3: 255,167,255;
+      --v-theme-secondary-lighten-3-overlay-multiplier: 2;
+      --v-theme-secondary-darken-2: 110,27,190;
+      --v-theme-secondary-darken-2-overlay-multiplier: 1;
+      --v-theme-secondary-darken-3: 80,0,162;
+      --v-theme-secondary-darken-3-overlay-multiplier: 1;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-primary-lighten-1: 255,255,255;
+      --v-theme-on-primary-lighten-2: 255,255,255;
+      --v-theme-on-primary-lighten-3: 0,0,0;
+      --v-theme-on-primary-darken-2: 255,255,255;
+      --v-theme-on-primary-darken-3: 255,255,255;
+      --v-theme-on-secondary-lighten-1: 255,255,255;
+      --v-theme-on-secondary-lighten-2: 0,0,0;
+      --v-theme-on-secondary-lighten-3: 0,0,0;
+      --v-theme-on-secondary-darken-2: 255,255,255;
+      --v-theme-on-secondary-darken-3: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-primary-lighten-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-lighten-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-lighten-1)) !important;
+      color: rgb(var(--v-theme-on-primary-lighten-1)) !important;
+    }
+    .bg-primary-lighten-2 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-lighten-2-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-lighten-2)) !important;
+      color: rgb(var(--v-theme-on-primary-lighten-2)) !important;
+    }
+    .bg-primary-lighten-3 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-lighten-3-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-lighten-3)) !important;
+      color: rgb(var(--v-theme-on-primary-lighten-3)) !important;
+    }
+    .bg-primary-darken-2 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-2-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-2)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-2)) !important;
+    }
+    .bg-primary-darken-3 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-3-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-3)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-3)) !important;
+    }
+    .bg-secondary-lighten-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-lighten-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-lighten-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-lighten-1)) !important;
+    }
+    .bg-secondary-lighten-2 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-lighten-2-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-lighten-2)) !important;
+      color: rgb(var(--v-theme-on-secondary-lighten-2)) !important;
+    }
+    .bg-secondary-lighten-3 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-lighten-3-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-lighten-3)) !important;
+      color: rgb(var(--v-theme-on-secondary-lighten-3)) !important;
+    }
+    .bg-secondary-darken-2 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-2-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-2)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-2)) !important;
+    }
+    .bg-secondary-darken-3 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-3-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-3)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-3)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .text-primary-lighten-1 {
+      color: rgb(var(--v-theme-primary-lighten-1)) !important;
+    }
+    .border-primary-lighten-1 {
+      --v-border-color: var(--v-theme-primary-lighten-1);
+    }
+    .text-primary-lighten-2 {
+      color: rgb(var(--v-theme-primary-lighten-2)) !important;
+    }
+    .border-primary-lighten-2 {
+      --v-border-color: var(--v-theme-primary-lighten-2);
+    }
+    .text-primary-lighten-3 {
+      color: rgb(var(--v-theme-primary-lighten-3)) !important;
+    }
+    .border-primary-lighten-3 {
+      --v-border-color: var(--v-theme-primary-lighten-3);
+    }
+    .text-primary-darken-2 {
+      color: rgb(var(--v-theme-primary-darken-2)) !important;
+    }
+    .border-primary-darken-2 {
+      --v-border-color: var(--v-theme-primary-darken-2);
+    }
+    .text-primary-darken-3 {
+      color: rgb(var(--v-theme-primary-darken-3)) !important;
+    }
+    .border-primary-darken-3 {
+      --v-border-color: var(--v-theme-primary-darken-3);
+    }
+    .text-secondary-lighten-1 {
+      color: rgb(var(--v-theme-secondary-lighten-1)) !important;
+    }
+    .border-secondary-lighten-1 {
+      --v-border-color: var(--v-theme-secondary-lighten-1);
+    }
+    .text-secondary-lighten-2 {
+      color: rgb(var(--v-theme-secondary-lighten-2)) !important;
+    }
+    .border-secondary-lighten-2 {
+      --v-border-color: var(--v-theme-secondary-lighten-2);
+    }
+    .text-secondary-lighten-3 {
+      color: rgb(var(--v-theme-secondary-lighten-3)) !important;
+    }
+    .border-secondary-lighten-3 {
+      --v-border-color: var(--v-theme-secondary-lighten-3);
+    }
+    .text-secondary-darken-2 {
+      color: rgb(var(--v-theme-secondary-darken-2)) !important;
+    }
+    .border-secondary-darken-2 {
+      --v-border-color: var(--v-theme-secondary-darken-2);
+    }
+    .text-secondary-darken-3 {
+      color: rgb(var(--v-theme-secondary-darken-3)) !important;
+    }
+    .border-secondary-darken-3 {
+      --v-border-color: var(--v-theme-secondary-darken-3);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .on-primary-lighten-1 {
+      color: rgb(var(--v-theme-on-primary-lighten-1)) !important;
+    }
+    .on-primary-lighten-2 {
+      color: rgb(var(--v-theme-on-primary-lighten-2)) !important;
+    }
+    .on-primary-lighten-3 {
+      color: rgb(var(--v-theme-on-primary-lighten-3)) !important;
+    }
+    .on-primary-darken-2 {
+      color: rgb(var(--v-theme-on-primary-darken-2)) !important;
+    }
+    .on-primary-darken-3 {
+      color: rgb(var(--v-theme-on-primary-darken-3)) !important;
+    }
+    .on-secondary-lighten-1 {
+      color: rgb(var(--v-theme-on-secondary-lighten-1)) !important;
+    }
+    .on-secondary-lighten-2 {
+      color: rgb(var(--v-theme-on-secondary-lighten-2)) !important;
+    }
+    .on-secondary-lighten-3 {
+      color: rgb(var(--v-theme-on-secondary-lighten-3)) !important;
+    }
+    .on-secondary-darken-2 {
+      color: rgb(var(--v-theme-on-secondary-darken-2)) !important;
+    }
+    .on-secondary-darken-3 {
+      color: rgb(var(--v-theme-on-secondary-darken-3)) !important;
+    }
+</style><link rel="modulepreload" href="/_payload.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/entry.638dfdac.js"><link rel="preload" as="style" href="/_nuxt/entry.d6350129.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/default.de58d2da.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/nuxt-link.1732d984.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/base.126a3198.js"><link rel="preload" as="style" href="/_nuxt/base.78ea7aeb.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/VMain.34227f78.js"><link rel="preload" as="style" href="/_nuxt/VMain.e6b12815.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/ssrBoot.b02e0988.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/VLabel.1475aadc.js"><link rel="preload" as="style" href="/_nuxt/VLabel.f7739b4d.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/index.ceb63f07.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/helpers.23a0596b.js"><link rel="preload" as="style" href="/_nuxt/helpers.5d26d9cd.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/VSpacer.b3fd4ada.js"><link rel="preload" as="style" href="/_nuxt/VSpacer.23ad1f09.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/index.858a4a56.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/error-component.971eb7d2.js"><link rel="stylesheet" href="/_nuxt/entry.d6350129.css"><link rel="stylesheet" href="/_nuxt/base.78ea7aeb.css"><link rel="stylesheet" href="/_nuxt/VMain.e6b12815.css"><link rel="stylesheet" href="/_nuxt/VLabel.f7739b4d.css"><link rel="stylesheet" href="/_nuxt/helpers.5d26d9cd.css"><link rel="stylesheet" href="/_nuxt/VSpacer.23ad1f09.css"><style>.label-email[data-v-d0dd345f]{margin-right:1rem}</style><style>.contenedor-formulario[data-v-efa91d3b]{align-items:center;display:grid;height:100%;width:100%}.v-enter-active[data-v-efa91d3b],.v-leave-active[data-v-efa91d3b]{transition:opacity .5s ease}.v-enter-from[data-v-efa91d3b],.v-leave-to[data-v-efa91d3b]{opacity:0}</style></head>
+<body ><div id="__nuxt"><!--[--><div data-v-d0dd345f><div class="v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr" style="z-index:1000;"><div class="v-application__wrap"><!--[--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><header class="v-toolbar v-toolbar--density-default elevation-1 v-theme--light v-app-bar" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-d0dd345f><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><div class="v-toolbar__prepend"><!--[--><a aria-current="page" href="/" class="router-link-active router-link-exact-active" data-v-d0dd345f><button type="button" class="v-btn v-theme--light v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="height:38px;" data-v-d0dd345f><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Subir archivos<!--]--><!--]--></span><!----><!----></button></a><a href="/reportes" class="" data-v-d0dd345f><button type="button" class="v-btn v-theme--light v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="height:38px;" data-v-d0dd345f><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Reportes<!--]--><!--]--></span><!----><!----></button></a><a href="/admin" class="" data-v-d0dd345f><button type="button" class="v-btn v-theme--light v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="height:38px;" data-v-d0dd345f><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Admin<!--]--><!--]--></span><!----><!----></button></a><!--]--></div><!----><!----><!----></div><!--]--><!--[--><!----><!--]--></header><div class="contenedor-formulario" data-v-d0dd345f data-v-efa91d3b><form class="v-form" style="" novalidate data-v-efa91d3b><!--[--><div class="v-container" style="" data-v-efa91d3b><div class="v-row" style="" data-v-efa91d3b><div class="v-col" style="" data-v-efa91d3b><div class="v-input v-input--horizontal v-input--density-default v-input--dirty v-input--readonly v-text-field v-select v-select--single v-select--selected" style="" data-v-efa91d3b><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--appended v-field--dirty v-field--variant-outlined v-theme--light" style="" role="textbox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background bg-primary" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long bg-primary" style=""></div><div class="v-progress-linear__indeterminate short bg-primary" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><label class="v-label v-field-label" style="" for="input-4"><!----><!--[-->Tipo de archivo<!--]--></label><!--[--><!--[--><!----><div class="v-field__input" data-no-activator><!--[--><!--[--><!--[--><!----><!----><!--]--><!--[--><div class="v-select__selection"><span class="v-select__selection-text">AGA Licenciatura<!----></span></div><!--]--><!--]--><!--]--><input value="LIC" readonly size="1" type="text" id="input-4" aria-describedby="input-4-messages"></div><!----><!--]--><!--]--></div><!----><div class="v-field__append-inner"><!----><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" tag="i" class="v-icon notranslate v-theme--light v-icon--size-default" style="" width="1em" height="1em" viewBox="0 0 16 16"></svg></div><div class="v-field__outline"><!--[--><div class="v-field__outline__start"></div><div class="v-field__outline__notch"><label class="v-label v-field-label v-field-label--floating" style="" aria-hidden="true" for="input-4"><!----><!--[-->Tipo de archivo<!--]--></label></div><div class="v-field__outline__end"></div><!--]--><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-4-messages"></div><!----></div></div></div></div><div class="v-row" style="" data-v-efa91d3b><div class="v-col" style="" data-v-efa91d3b><div class="v-input v-input--horizontal v-input--density-default v-file-input" style="" data-v-efa91d3b><div class="v-input__prepend"><!----><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="button" tag="i" class="v-icon notranslate v-theme--light v-icon--size-default v-icon--clickable" aria-label="Seleccionar archivos prepended action" style="" width="1em" height="1em" viewBox="0 0 16 16"></svg></div><div class="v-input__control"><!--[--><div class="v-field v-field--appended v-field--variant-outlined v-theme--light" style="" prepend-icon="$file"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><label class="v-label v-field-label" style="" for="input-7"><!----><!--[-->Seleccionar archivos<!--]--></label><!--[--><!--[--><input type="file" multiple id="input-7" aria-describedby="input-7-messages"><div class="v-field__input"><!----></div><!--]--><!--]--></div><div class="v-field__clearable" style="display:none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="button" tag="i" class="v-icon notranslate v-theme--light v-icon--size-default v-icon--clickable" aria-label="Clear Seleccionar archivos" style="" width="1em" height="1em" viewBox="0 0 16 16"></svg></div><div class="v-field__append-inner"><!----><!----></div><div class="v-field__outline"><!--[--><div class="v-field__outline__start"></div><div class="v-field__outline__notch"><label class="v-label v-field-label v-field-label--floating" style="" aria-hidden="true" for="input-7"><!----><!--[-->Seleccionar archivos<!--]--></label></div><div class="v-field__outline__end"></div><!--]--><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-7-messages"></div><!--[--><!--[--><!----><!--[--><span></span><div class="v-counter" style="display:none;">0 files (0 B in total)</div><!--]--><!--]--><!--]--></div></div></div></div><div class="v-row" style="" data-v-efa91d3b data-v-efa91d3b><div class="v-col-sm-6 v-col-12" style="" data-v-efa91d3b><div class="v-input v-input--horizontal v-input--density-comfortable v-input--dirty v-text-field" style="" data-v-efa91d3b><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--dirty v-field--variant-outlined v-theme--light" style="" role="textbox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background bg-primary" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long bg-primary" style=""></div><div class="v-progress-linear__indeterminate short bg-primary" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><label class="v-label v-field-label" style="" for="input-9"><!----><!--[-->Trimestre<!--]--></label><!--[--><!--[--><!----><input value="23P" size="1" type="text" id="input-9" aria-describedby="input-9-messages" class="v-field__input"><!----><!--]--><!--]--></div><!----><!----><div class="v-field__outline"><!--[--><div class="v-field__outline__start"></div><div class="v-field__outline__notch"><label class="v-label v-field-label v-field-label--floating" style="" aria-hidden="true" for="input-9"><!----><!--[-->Trimestre<!--]--></label></div><div class="v-field__outline__end"></div><!--]--><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-9-messages"></div><!----></div></div></div><div class="v-col-sm-6 v-col-12" style="" data-v-efa91d3b><div class="v-input v-input--horizontal v-input--density-comfortable v-input--dirty v-text-field" style="" data-v-efa91d3b><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--dirty v-field--variant-outlined v-theme--light" style="" role="textbox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background bg-primary" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long bg-primary" style=""></div><div class="v-progress-linear__indeterminate short bg-primary" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><label class="v-label v-field-label" style="" for="input-11"><!----><!--[-->Semana<!--]--></label><!--[--><!--[--><!----><input value="4" size="1" type="text" id="input-11" aria-describedby="input-11-messages" class="v-field__input"><!----><!--]--><!--]--></div><!----><!----><div class="v-field__outline"><!--[--><div class="v-field__outline__start"></div><div class="v-field__outline__notch"><label class="v-label v-field-label v-field-label--floating" style="" aria-hidden="true" for="input-11"><!----><!--[-->Semana<!--]--></label></div><div class="v-field__outline__end"></div><!--]--><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-11-messages"></div><!----></div></div></div></div><div class="v-row v-row--dense" style="" data-v-efa91d3b><div class="v-col" style="" data-v-efa91d3b><div class="v-input v-input--horizontal v-input--density-default v-input--dirty v-switch" style="" data-v-efa91d3b><!----><div class="v-input__control"><!--[--><div class="v-selection-control v-selection-control--density-default" style=""><div class="v-selection-control__wrapper" style=""><!--[--><div class="v-switch__track"></div><!--]--><div class="v-selection-control__input"><!----><input id="switch-13" aria-disabled="false" type="checkbox" value="true" aria-describedby="switch-13-messages"><!--[--><div class="v-switch__thumb" style=""><!----></div><!--]--></div></div><label class="v-label v-label--clickable" style="" for="switch-13"><!----><!--[-->Opciones avanzadas<!--]--></label></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="switch-13-messages"></div><!----></div></div></div></div><!----><div class="v-row" style="" data-v-efa91d3b><div class="flex-grow-1" style="" data-v-efa91d3b></div><button type="submit" class="v-btn v-theme--light v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-flat" style="height:38px;" data-v-efa91d3b><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Subir archivos<!--]--><!--]--></span><!----><!----></button><div class="flex-grow-1" style="" data-v-efa91d3b></div></div><div class="v-row" style="" data-v-efa91d3b><div class="v-col" style="" data-v-efa91d3b><!----></div></div></div><!--]--></form></div><!--]--><!--]--></main><!--]--></div></div></div><!--]--></div><script type="module">import p from "/_payload.js";window.__NUXT__={...p,...({state:{},_errors:{},serverRendered:true,config:{public:{},app:{baseURL:"\u002F",buildAssetsDir:"\u002F_nuxt\u002F",cdnURL:""}},prerenderedAt:1683727264104})}</script><script type="module" src="/_nuxt/entry.638dfdac.js" crossorigin></script></body>
+</html>
