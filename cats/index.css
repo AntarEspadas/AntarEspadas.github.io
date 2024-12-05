@@ -1,0 +1,172 @@
+:root {
+  --slideDuration: 1500ms;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.presentation {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  transform: translateX(var(--offset));
+  overflow: hidden;
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.slide .main {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slide .bg {
+  width: 200%;
+  height: 200%;
+  object-fit: cover;
+  filter: blur(50px);
+  -webkit-filter: blur(50px);
+}
+
+.slide-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.nav-button {
+  top: 50vh;
+  width: min(10vw, 10vh);
+  height: min(10vw, 10vh);
+  background-image: url("./img/arrow.png");
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.ui-button {
+  position: fixed;
+  opacity: 0.25;
+  transition: opacity 250ms ease-out;
+}
+
+.ui-button:hover {
+  opacity: 0.75;
+  transition: opacity 500 ease-out;
+  cursor: pointer;
+}
+
+#prev-button {
+  left: 0;
+  transform: rotate(180deg) translate(-50%, 50%);
+}
+
+#next-button {
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+#pause-button {
+  top: 1vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  width: min(5vw, 5vh);
+  height: min(5vw, 5vh);
+  border-radius: 5%;
+  background-size: cover;
+}
+
+#interval-slider {
+  display: none;
+  width: 10%;
+  height: 5vh;
+}
+
+#interval-input {
+  width: min(5vw, 5vh);
+  height: min(2.5vw, 2.5vh);
+  text-align: center;
+  font-size: min(2.5vw, 2.5vh);
+  padding: 0;
+}
+
+#interval-input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.pause {
+  background-image: url("./img/play.png");
+}
+
+.play {
+  background-image: url("./img/pause.png");
+}
+
+.ui-hidden {
+  opacity: 0 !important;
+  transition: opacity 500ms ease-in;
+}
+
+.ui-root {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ui-root>* {
+  pointer-events: all;
+}
+
+.progress-bar {
+  position: absolute;
+  transition: opacity 250ms ease-out;
+  height: 1.5mm;
+  background-color: black;
+  opacity: 0.25;
+  bottom: 0px;
+}
+
+#progress-bar-elapsed {
+  left: 0;
+  width: 0%;
+  background-color: black;
+  opacity: 0.75;
+}
+
+#progress-bar-pending {
+  right: 0;
+  width: 100%;
+  background-color: black;
+  opacity: 0.25;
+}
